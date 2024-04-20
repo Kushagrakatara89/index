@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Paper Scissors Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color:red;
+    }
+    .container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .choices {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .choices button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .result {
+        font-size: 24px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Rock Paper Scissors</h1>
+    <div class="choices">
+        <button onclick="play('rock')">Rock</button>
+        <button onclick="play('paper')">Paper</button>
+        <button onclick="play('scissors')">Scissors</button>
+    </div>
+    <div class="result" id="result"></div>
+</div>
+<script>
+    function play(userChoice) {
+        var choices = ['rock', 'paper', 'scissors'];
+        var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+        var result;
+        if (userChoice === computerChoice) {
+            result = "It's a tie!";
+        } else if (
+            (userChoice === 'rock' && computerChoice === 'scissors') ||
+            (userChoice === 'paper' && computerChoice === 'rock') ||
+            (userChoice === 'scissors' && computerChoice === 'paper')
+        ) {
+            result = "You win!";
+        } else {
+            result = "Computer wins!";
+        }
+
+        document.getElementById('result').innerText = `You chose ${userChoice}, computer chose ${computerChoice}. ${result}`;
+    }
+</script>
+</body>
+</html>
